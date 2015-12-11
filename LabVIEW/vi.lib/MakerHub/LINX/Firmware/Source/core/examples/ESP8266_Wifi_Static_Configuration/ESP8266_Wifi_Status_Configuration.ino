@@ -16,11 +16,11 @@
 #include <Servo.h>
 #include <ESP8266WiFi.h>
 
-//Include Device Specific Header From Sketch>>Import Library (In This Case LinxChipkitMax32.h)
-//Also Include Desired LINX Listener From Sketch>>Import Library (In This Case LinxSerialListener.h)
+//Include Device Specific Header From Sketch>>Import Library (In This Case LinxESP8266.h)
+//Also Include Desired LINX Listener From Sketch>>Import Library (In This Case LinxESP8266WifiListener.h)
 #include <LinxESP8266.h>
 #include <LinxESP8266WifiListener.h>
- 
+
 //Create A Pointer To The LINX Device Object We Instantiate In Setup()
 LinxESP8266* LinxDevice;
 
@@ -29,8 +29,8 @@ void setup()
 {
   //Instantiate The LINX Device
   LinxDevice = new LinxESP8266();
-   
-  //The LINX Listener Is Pre Instantiated.  
+
+  //The LINX Listener Is Pre Instantiated.
   //Set SSID (Network Name), Security Type, Passphrase/Key, And Call Start With Desired Device IP and Port
   LinxWifiConnection.SetSsid("YOUR_NETWORK_NAME");
   LinxWifiConnection.SetSecurity(WPA2_PASSPHRASE);    		   //NONE, WPA2_PASSPHRASE, WPA2_KEY, WEP40, WEO104
@@ -42,8 +42,6 @@ void loop()
 {
   //Listen For New Packets From LabVIEW
   LinxWifiConnection.CheckForCommands();
-  
+
   //Your Code Here, But It will Slow Down The Connection With LabVIEW
 }
-
-
